@@ -1,0 +1,17 @@
+workflows:
+  android-workflow:
+    name: Ayah Widget APK
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      vars:
+        PACKAGE_NAME: "com.ayah.app"
+    scripts:
+      - name: Unzip app
+        script: |
+          unzip -o app.zip || true
+      - name: Build APK
+        script: |
+          echo "Building..."
+    artifacts:
+      - "**/*.apk"
